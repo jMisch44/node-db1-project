@@ -13,14 +13,13 @@ const create = async (account) => {
   return getById(id)
 };
 
-const updateById = (id, account) => {
-  // DO YOUR MAGIC
-  return "connected";
+const updateById = async (id, account) => {
+  await db("accounts").where('id', id).update(account)
+  return getById(id)
 };
 
 const deleteById = (id) => {
-  // DO YOUR MAGIC
-  return "connected";
+  return db("accounts").where('id', id).delete()
 };
 
 module.exports = {

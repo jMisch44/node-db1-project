@@ -1,6 +1,6 @@
 const router = require("express").Router();
 
-const Accounts = require("./accounts-model.js");
+const Account = require("./accounts-model.js");
 const {
   checkAccountId, 
   checkAccountPayload, 
@@ -9,19 +9,15 @@ const {
 
 router.get("/", async (req, res, next) => {
   try {
-    console.log(await Accounts.getAll())
+    const accounts = await Account.getAll()
+    res.status(200).json(accounts)
   } catch (err) {
     next(err)
   }
 });
 
 router.get("/:id", checkAccountId, async (req, res, next) => {
-  // try {
-  //   const account = await Accounts.getById(req.params.id)
-  //   res.status(200).json(account)
-  // } catch (err) {
-  //   next(err)
-  // }
+  res.json(req.account)
 });
 
 router.post("/", (req, res, next) => {

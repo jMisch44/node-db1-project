@@ -3,10 +3,12 @@ const accountsRouter = require("./accounts/accounts-router");
 const server = express();
 
 server.use(express.json());
-server.use(express.Router("/api/accounts", accountsRouter));
+server.use("/api/accounts", accountsRouter);
 
-server.get('/', (req,res) => {
-    res.json("home")
+server.use('*', (req, res) => {
+    res.status(404).json({
+        message: 'not found'
+    })
 })
 
 module.exports = server;

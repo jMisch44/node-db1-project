@@ -1,22 +1,28 @@
+const db = require("../../data/db-config");
+
 const getAll = () => {
-  // DO YOUR MAGIC
-}
+  return db("account")
+};
 
-const getById = id => {
+const getById = (id) => {
   // DO YOUR MAGIC
-}
+  return "connected";
+};
 
-const create = account => {
+const create = (account) => {
   // DO YOUR MAGIC
-}
+  return "connected";
+};
 
 const updateById = (id, account) => {
   // DO YOUR MAGIC
-}
+  return "connected";
+};
 
-const deleteById = id => {
+const deleteById = (id) => {
   // DO YOUR MAGIC
-}
+  return "connected";
+};
 
 module.exports = {
   getAll,
@@ -24,4 +30,4 @@ module.exports = {
   create,
   updateById,
   deleteById,
-}
+};

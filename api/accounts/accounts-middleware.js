@@ -2,8 +2,9 @@ const Account = require('./accounts-model')
 const db = require('../../data/db-config')
 
 exports.checkAccountPayload = (req, res, next) => {
+  const error = { status: 400 }
   const { name, budget } = req.body
-  if(!name || !budget) {
+  if(name === undefined || budget === undefined) {
     next({
       status: 400, 
       message: "name and budget are required"

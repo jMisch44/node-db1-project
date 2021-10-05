@@ -1,21 +1,5 @@
 const Account = require('./accounts-model')
 const db = require('../../data/db-config')
-const yup = require('yup')
-
-
-// const accountPayloadSchema = yup.object().shape({
-//   name: yup
-//   .string("name of account must be a string")
-//   .trim()
-//   .min(3, "name of account must be between 3 and 100")
-//   .max(100, "name of account must be between 3 and 100")
-//   .required("name and budget are required"),
-//   budget: yup
-//   .number("budget of account must be a number")
-//   .min(1, "budget of account is too large or too small")
-//   .max(99999,  "budget of account is too large or too small")
-//   .required("name and budget are required"),
-// })
 
 exports.checkAccountPayload = async (req, res, next) => {
   const { name, budget } = req.body
@@ -45,20 +29,10 @@ exports.checkAccountPayload = async (req, res, next) => {
       message: "budget of account is too large or too small"
     })
   } else {
-    next()
-  }
-
-} 
-
-exports.trimPayloadName = async (req, res, next) => {
-  const { name } = req.body
-  if(typeof name === "string") {
     req.body.name = name.trim();
     next()
-  } else {
-    next()
   }
-}
+} 
 
 exports.checkAccountNameUnique = async (req, res, next) => {
   try {
